@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 60th Birthday, Errol! 🎷</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #f4c842;
+      --gold-dark: #d4a017;
+      --deep: #0d0d1a;
+      --navy: #0f1535;
+      --indigo: #1a1f4e;
+      --cream: #fdf8ee;
+      --warm: #f9f3e3;
+      --red: #c0392b;
+      --green: #27ae60;
+      --jazz: #7c3aed;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ── CONFETTI CANVAS ── */
+    #confetti-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background:
+        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(244,200,66,0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #0d0d1a 0%, #0f1535 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(244,200,66,0.06) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(124,58,237,0.08) 0%, transparent 40%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(244,200,66,0.15);
+      border: 1px solid rgba(244,200,66,0.4);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(8rem, 22vw, 18rem);
+      font-weight: 900;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(244,200,66,0.4);
+      background: linear-gradient(135deg, var(--gold) 0%, #fff8e0 50%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 1s ease 0.1s both;
+      filter: drop-shadow(0 0 60px rgba(244,200,66,0.3));
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1s ease 0.3s both;
+      text-shadow: 0 0 60px rgba(244,200,66,0.4);
+    }
+
+    .hero-message {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(253,248,238,0.75);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .hero-note {
+      font-style: italic;
+      color: rgba(244,200,66,0.8);
+    }
+
+    .hero-scroll {
+      animation: fadeUp 1s ease 0.6s both, bounce 2s ease 1.5s infinite;
+      color: rgba(244,200,66,0.6);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .hero-scroll span { font-size: 1.5rem; }
+
+    /* ── NOTE FROM KYLE ── */
+    .note-section {
+      background: var(--navy);
+      padding: 6rem 1.5rem;
+      border-top: 1px solid rgba(244,200,66,0.15);
+    }
+
+    .note-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(244,200,66,0.04);
+      border: 1px solid rgba(244,200,66,0.15);
+      border-radius: 20px;
+      padding: 3rem;
+      position: relative;
+    }
+
+    .note-card::before {
+      content: '🎷';
+      font-size: 4rem;
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 4px 12px rgba(244,200,66,0.3));
+    }
+
+    .note-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .note-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.85;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .note-sig {
+      margin-top: 2rem;
+      text-align: right;
+      font-size: 1rem;
+      color: rgba(244,200,66,0.8);
+      font-style: italic;
+    }
+
+    /* ── TRIP HEADER ── */
+    .trip-header {
+      text-align: center;
+      padding: 6rem 1.5rem 3rem;
+      background: var(--deep);
+    }
+
+    .trip-header .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .trip-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .trip-header p {
+      color: rgba(253,248,238,0.6);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── ROUTE BAR ── */
+    .route-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 2rem 1.5rem;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .route-city {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      padding: 0.25rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    .route-arrow {
+      color: rgba(244,200,66,0.35);
+      font-size: 1rem;
+      padding: 0 0.25rem;
+    }
+
+    /* ── ITINERARY ── */
+    .itinerary {
+      padding: 0 1.5rem 6rem;
+      background: var(--deep);
+    }
+
+    .day-block {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.3s;
+    }
+
+    .day-block:hover { border-color: rgba(244,200,66,0.25); }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.75rem 2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .day-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+
+    .day-info { flex: 1; }
+
+    .day-date {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244,200,66,0.6);
+      margin-bottom: 0.2rem;
+    }
+
+    .day-city {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .day-tagline {
+      font-size: 0.85rem;
+      color: rgba(253,248,238,0.5);
+      margin-top: 0.15rem;
+    }
+
+    .day-flag {
+      font-size: 2rem;
+    }
+
+    .day-toggle {
+      color: rgba(244,200,66,0.5);
+      font-size: 1.25rem;
+      transition: transform 0.3s;
+    }
+
+    .day-block.open .day-toggle { transform: rotate(45deg); }
+
+    .day-body {
+      display: none;
+      padding: 0 2rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .day-block.open .day-body { display: block; }
+
+    .day-intro {
+      font-size: 0.95rem;
+      color: rgba(253,248,238,0.65);
+      line-height: 1.75;
+      margin: 1.5rem 0;
+    }
+
+    /* ── PICKS ── */
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .pick-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .pick-card:hover { border-color: rgba(244,200,66,0.2); }
+
+    .pick-who {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .pick-who.errol { background: rgba(244,200,66,0.15); color: #f4c842; border: 1px solid rgba(244,200,66,0.3); }
+    .pick-who.jonathan { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .pick-who.maria { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
+    .pick-who.kyle { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .pick-who.all { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+
+    .pick-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.35rem;
+    }
+
+    .pick-desc {
+      font-size: 0.82rem;
+      color: rgba(253,248,238,0.5);
+      line-height: 1.55;
+    }
+
+    /* ── FOOD ── */
+    .food-section {
+      margin-top: 1.75rem;
+      background: rgba(244,200,66,0.04);
+      border: 1px solid rgba(244,200,66,0.1);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .food-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .food-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .food-tag {
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(253,248,238,0.7);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* ── NIGHTCAP ── */
+    .night-banner {
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(244,200,66,0.08));
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: rgba(253,248,238,0.75);
+    }
+
+    .night-banner strong { color: #c4b5fd; }
+
+    /* ── COLOR LEGEND ── */
+    .legend {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+
+    .legend-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(253,248,238,0.4);
+      margin-right: 0.5rem;
+    }
+
+    /* ── CITY COLORS ── */
+    .nola { background: linear-gradient(135deg, #1a0a2e, #2d1054); }
+    .batonrouge { background: linear-gradient(135deg, #1a0c0c, #3d1010); }
+    .memphis { background: linear-gradient(135deg, #0c150a, #1a3010); }
+    .nashville { background: linear-gradient(135deg, #0a0f1a, #0f1f3d); }
+    .louisville { background: linear-gradient(135deg, #1a0f0a, #3d2010); }
+
+    /* ── CLOSING ── */
+    .closing {
+      text-align: center;
+      padding: 6rem 1.5rem;
+      background: var(--navy);
+      border-top: 1px solid rgba(244,200,66,0.15);
+    }
+
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .closing p {
+      color: rgba(253,248,238,0.65);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+
+    .family-list {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .family-member {
+      text-align: center;
+    }
+
+    .family-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 0.5rem;
+    }
+
+    .family-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: rgba(253,248,238,0.7);
+    }
+
+    .family-vibe {
+      font-size: 0.7rem;
+      color: rgba(253,248,238,0.4);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .day-header { padding: 1.25rem; gap: 1rem; }
+      .day-body { padding: 0 1.25rem 1.5rem; }
+      .note-card { padding: 2rem 1.5rem; }
+      .day-num { font-size: 2rem; }
+      .day-city { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">🎉 A Family Celebration · April–May 2026</div>
+  <span class="hero-number">60</span>
+  <h1 class="hero-title">Happy Birthday,</h1>
+  <div class="hero-name">Errol</div>
+  <p class="hero-message">
+    Six decades of music, wisdom, love, and laughter.<br/>
+    Your kids are taking you on an adventure.<br/>
+    <span class="hero-note">Pack light. Bring your dancing shoes. 🎷</span>
+  </p>
+  <div class="hero-scroll" onclick="document.querySelector('.note-section').scrollIntoView({behavior:'smooth'})">
+    <span>↓</span>
+    Keep scrolling
+  </div>
+</section>
+
+<!-- ── NOTE ── -->
+<section class="note-section">
+  <div class="note-card">
+    <div class="note-label">A note from your family</div>
+    <p class="note-text">
+      "Dad — 60 years. We wanted to do something that felt as big as you are to us.
+      So we're hitting the road: jazz, riverbends, blues, BBQ, country music, and bourbon.
+      The Mississippi River as your birthday backdrop. We love you more than words,
+      so we're showing you instead."
+    </p>
+    <div class="note-sig">— Kyle, Jonathan &amp; Maria ❤️</div>
+  </div>
+</section>
+
+<!-- ── TRIP HEADER ── -->
+<div class="trip-header">
+  <div class="label">The Birthday Road Trip</div>
+  <h2>New Orleans → Memphis → Nashville → Louisville</h2>
+  <p>11 days. 4 cities. 1 family. Infinite memories.</p>
+</div>
+
+<!-- ── ROUTE BAR ── -->
+<div class="route-bar">
+  <span class="route-city">✈️ New York</span>
+  <span class="route-arrow">→</span>
+  <span class="route-city">🎷 New Orleans</span>
+  <span class="route-arrow">→</span>
+  <span class="route-city">🐊 Baton Rouge</span>
+  <span class="route-arrow">→</span>
+  <span class="route-city">🌊 Natchez Trace</span>
+  <span class="route-arrow">→</span>
+  <span class="route-city">🎸 Memphis</span>
+  <span class="route-arrow">→</span>
+  <span class="route-city">🤠 Nashville</span>
+  <span class="route-arrow">→</span>
+  <span class="route-city">🥃 Louisville</span>
+</div>
+
+<!-- ── ITINERARY ── -->
+<section class="itinerary">
+  <!-- LEGEND -->
+  <div class="legend" style="margin-top: 3rem;">
+    <span class="legend-label">Picks for:</span>
+    <span class="pick-who errol">🎷 Errol</span>
+    <span class="pick-who jonathan">🏈 Jonathan</span>
+    <span class="pick-who maria">🎨 Maria</span>
+    <span class="pick-who kyle">🗺️ Kyle</span>
+    <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-block nola open" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">1</div>
+      <div class="day-info">
+        <div class="day-date">Wednesday, April 30</div>
+        <div class="day-city">Arrive New Orleans</div>
+        <div class="day-tagline">Touch down in the Crescent City — let the music find you</div>
+      </div>
+      <div class="day-flag">🎷</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">You're landing late, but New Orleans doesn't sleep. Check into your hotel, drop your bags, and walk straight to Frenchmen Street. The bands will still be playing. This is your first taste of what Errol's week is made of.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Frenchmen Street Live Jazz</div>
+          <div class="pick-desc">The real jazz scene. Multiple clubs side by side — Snug Harbor, The Spotted Cat, d.b.a. Live music till 4am. This is your city tonight.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Evening Beignets at Café Du Monde</div>
+          <div class="pick-desc">Open 24 hours. Powdered sugar cloud beignets and café au lait. A New Orleans rite of passage — do it the first night.</div>
+        </div>
+      </div>
+      <div class="food-section">
+        <div class="food-title">🍽️ Late Night Eats</div>
+        <div class="food-list">
+          <span class="food-tag">Café Du Monde (beignets)</span>
+          <span class="food-tag">Clover Grill (24hr diner)</span>
+          <span class="food-tag">Verti Marte (deli)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAYS 2-4 -->
+  <div class="day-block nola" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">2–4</div>
+      <div class="day-info">
+        <div class="day-date">Thursday May 1 – Saturday May 3</div>
+        <div class="day-city">New Orleans Jazz Fest</div>
+        <div class="day-tagline">The world's greatest music festival — and it's Errol's birthday week</div>
+      </div>
+      <div class="day-flag">🎺</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">Jazz Fest at the New Orleans Fair Grounds is a bucket-list experience — 12 stages, incredible food, art vendors, and the city's soul on full display. Three full days here. Take your time, split up and reconvene, soak it all in.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Jazz Fest Main Stages</div>
+          <div class="pick-desc">Check the lineup when you arrive — Jazz Fest regularly features artists in the Herbie Hancock universe. The Jazz Tent and Blues Tent are must-stays. This is the centrepiece of the whole trip.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Preservation Hall</div>
+          <div class="pick-desc">The most iconic jazz venue in America. Small, intimate, powerful. Buy tickets in advance — 3 shows a night. An easy evening ritual between festival days.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">Caesar's Superdome Tour</div>
+          <div class="pick-desc">Home of the Saints. One of the most storied venues in NFL history. Tour the stadium and walk the field. Worth the 2 hours.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">Zephyr Field / Sports Scene</div>
+          <div class="pick-desc">Check local sports schedules — minor league baseball and other events often run during Jazz Fest weekend. New Orleans has a passionate sports culture.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">New Orleans Museum of Art (NOMA)</div>
+          <div class="pick-desc">World-class collection including African, French, and American art. Beautiful sculpture garden. Half-day visit — take a quiet morning here before the festival heat.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">Ogden Museum of Southern Art</div>
+          <div class="pick-desc">Only museum dedicated to Southern art — vibrant, colourful, emotional. Jazz Fest nights feature live music in the galleries. Maria's favourite stop.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">St. Louis Cemetery #1 Tour</div>
+          <div class="pick-desc">New Orleans buries its dead above ground. Oldest cemetery in the city, steeped in Voodoo history and legend. Guided tours only — book ahead. Eerie and unforgettable.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">Airboat Swamp Tour</div>
+          <div class="pick-desc">An hour outside NOLA: alligators, cypress trees, Spanish moss. A completely different Louisiana ecosystem. Book a dawn or dusk tour for the best wildlife sightings.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Garden District Walk</div>
+          <div class="pick-desc">Stroll the grand antebellum mansions on St. Charles Avenue. Ride the historic streetcar. Stop at Commander's Palace for the famous jazz brunch — one of America's great restaurant experiences.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">French Quarter & Bourbon Street</div>
+          <div class="pick-desc">Walk Jackson Square, browse the art vendors, eat a muffuletta at Central Grocery. Save Bourbon Street for one big night — it earns its reputation.</div>
+        </div>
+      </div>
+      <div class="food-section">
+        <div class="food-title">🍽️ Must Eat in New Orleans</div>
+        <div class="food-list">
+          <span class="food-tag">Commander's Palace (jazz brunch)</span>
+          <span class="food-tag">Dooky Chase's (legendary NOLA)</span>
+          <span class="food-tag">Galatoire's (French Quarter institution)</span>
+          <span class="food-tag">August (fine dining)</span>
+          <span class="food-tag">Cochon (Cajun)</span>
+          <span class="food-tag">Domilise's Po-Boys</span>
+          <span class="food-tag">Central Grocery muffuletta</span>
+          <span class="food-tag">Hansen's Sno-Bliz (shaved ice)</span>
+        </div>
+      </div>
+      <div class="night-banner">
+        🌙 <strong>Every night:</strong> Frenchmen Street for live jazz. Different bands each night. This is where the locals go after Jazz Fest winds down. Plan for at least 2–3 late nights here.
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-block nola" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">5</div>
+      <div class="day-info">
+        <div class="day-date">Sunday, May 4</div>
+        <div class="day-city">Last Day in New Orleans</div>
+        <div class="day-tagline">Slow morning, last tastes, final jazz — pack tonight</div>
+      </div>
+      <div class="day-flag">🌅</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">One more day in the city before the road trip begins. Sleep in, walk the Bywater neighborhood, and have a proper farewell dinner. Jazz Fest weekend finale.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Bywater Neighborhood Stroll</div>
+          <div class="pick-desc">Hip, artistic, colourful. Street murals everywhere, locally-owned coffee shops, the city's creative community. Great morning walk.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Final Jazz Fest Day</div>
+          <div class="pick-desc">Jazz Fest Sunday — often features the biggest headliners. Make it count. The closing sets are usually legendary.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Farewell Dinner: Dooky Chase's</div>
+          <div class="pick-desc">Louis Armstrong ate here before every Jazz Fest performance. Obama visited. Civil rights history, incredible Creole food, and a New Orleans institution since 1941. Book ahead.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-block batonrouge" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">6</div>
+      <div class="day-info">
+        <div class="day-date">Monday, May 5</div>
+        <div class="day-city">Baton Rouge</div>
+        <div class="day-tagline">Death Valley, LSU, and a bayou sunset</div>
+      </div>
+      <div class="day-flag">🐊</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">Drive 80 miles west up the Mississippi River. Baton Rouge was the site of a crucial Civil War battle and is home to one of the most passionate college football cultures in America. Arrive by afternoon, explore, stay the night.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">Tiger Stadium (Death Valley)</div>
+          <div class="pick-desc">LSU's home field — one of the loudest stadiums in the world. No game today, but walk around the outside. During a game it holds 102,000. Jonathan will feel it just standing there.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">Old Louisiana State Capitol</div>
+          <div class="pick-desc">Mark Twain called it a "monstrosity." It's actually stunning — Gothic Revival, stained glass rotunda, wild political history. Free and unique.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">USS Kidd Veterans Museum</div>
+          <div class="pick-desc">A perfectly preserved WWII destroyer docked on the Mississippi River. You can walk the entire ship. Remarkable piece of floating history.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">LSU Rural Life Museum</div>
+          <div class="pick-desc">25-acre outdoor folk art and architecture museum — original plantation buildings, Acadian structures, folk art collection. Maria's afternoon highlight.</div>
+        </div>
+      </div>
+      <div class="food-section">
+        <div class="food-title">🍽️ Dinner in Baton Rouge</div>
+        <div class="food-list">
+          <span class="food-tag">Parrain's Seafood (local institution)</span>
+          <span class="food-tag">Drusilla Seafood (casual, excellent)</span>
+          <span class="food-tag">Strops (boudin & crawfish)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-block memphis" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">7</div>
+      <div class="day-info">
+        <div class="day-date">Tuesday, May 6</div>
+        <div class="day-city">Natchez Trace → Port Gibson → Memphis</div>
+        <div class="day-tagline">One of America's great scenic drives — history at every mile</div>
+      </div>
+      <div class="day-flag">🌊</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">This is Kyle's dream day. Drive north on the Natchez Trace Parkway — a stunning 444-mile national parkway following the ancient trail that linked New Orleans to Nashville. No commercial traffic, no billboards. Stop at Port Gibson, one of the best-preserved antebellum towns in the South. Push on to Memphis by evening.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">Natchez Trace Parkway</div>
+          <div class="pick-desc">A Native American path turned Civil War route turned national treasure. Forested, serene, dotted with historical markers. The drive IS the destination.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Port Gibson — "Too Beautiful to Burn"</div>
+          <div class="pick-desc">Ulysses Grant refused to burn it during the Civil War. Walk the main street lined with antebellum churches — including the famous church with a golden hand pointing toward heaven instead of a steeple.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">Vicksburg National Military Park</div>
+          <div class="pick-desc">One of the most significant Civil War battlefields in America. The siege of Vicksburg turned the tide of the war. Drive the 16-mile battlefield loop — haunting and incredible.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">Natchez — Antebellum Mansion Trail</div>
+          <div class="pick-desc">If you have time: Natchez has more antebellum mansions than anywhere in America. Stanton Hall, Melrose, Longwood (the unfinished octagonal wonder). An hour detour worth making.</div>
+        </div>
+      </div>
+      <div class="night-banner">
+        🚗 <strong>Drive time:</strong> Baton Rouge to Memphis via Natchez Trace is about 5–6 hours with stops. Leave by 9am, arrive Memphis early evening. Dinner on Beale Street tonight.
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="day-block memphis" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">8</div>
+      <div class="day-info">
+        <div class="day-date">Wednesday, May 7</div>
+        <div class="day-city">Memphis</div>
+        <div class="day-tagline">Elvis, civil rights, the blues, and the best ribs on earth</div>
+      </div>
+      <div class="day-flag">🎸</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">Memphis punches well above its weight. This is where rock and roll was born, where the civil rights movement made its most painful sacrifice, and where BBQ becomes religion. Full day here — split up by interest in the morning, reconvene for a Beale Street evening.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Sun Studio</div>
+          <div class="pick-desc">Where Elvis, Johnny Cash, Jerry Lee Lewis, and B.B. King recorded their first songs. Still an active recording studio. The tour is electric — you stand on the same floor where rock and roll was invented.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Beale Street Live Music</div>
+          <div class="pick-desc">B.B. King's Blues Club, Rum Boogie, Blues City Cafe — outdoor stages, indoor clubs, music spilling onto the street. Errol's second great music night of the trip.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">FedExForum</div>
+          <div class="pick-desc">Home of the Memphis Grizzlies. Check if there's a playoff game — NBA playoffs run through May. Even if not, do the arena tour. Grit Grind culture is palpable.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">National Civil Rights Museum</div>
+          <div class="pick-desc">Built around the Lorraine Motel where Dr. King was assassinated. The most powerful museum in America. Allow 3–4 hours. Deeply emotional. Non-negotiable for this trip.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">Memphis Brooks Museum of Art</div>
+          <div class="pick-desc">Tennessee's oldest and largest art museum. Strong collection of Italian Renaissance, French Impressionist, and American art. Beautiful building in Overton Park.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Graceland</div>
+          <div class="pick-desc">Elvis's home. Bizarre, kitschy, and legitimately fascinating. Even non-fans leave moved. The jungle room, the gold records, the grave in the garden. American mythology made physical.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">Mississippi River Overlook</div>
+          <div class="pick-desc">You've been following this river for days. Stand at Tom Lee Park or Mud Island and really take it in. The Memphis bridge at sunset is one of the great American views.</div>
+        </div>
+      </div>
+      <div class="food-section">
+        <div class="food-title">🍽️ Memphis BBQ (a serious matter)</div>
+        <div class="food-list">
+          <span class="food-tag">Rendezvous (dry ribs, institution since 1948)</span>
+          <span class="food-tag">Central BBQ (best overall)</span>
+          <span class="food-tag">Gus's Fried Chicken (legendary)</span>
+          <span class="food-tag">Cozy Corner (BBQ Cornish hen — try it)</span>
+          <span class="food-tag">The Arcade Restaurant (Elvis's diner)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAYS 9-10 -->
+  <div class="day-block nashville" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">9–10</div>
+      <div class="day-info">
+        <div class="day-date">Thursday–Friday, May 8–9</div>
+        <div class="day-city">Nashville</div>
+        <div class="day-tagline">Music City — honky tonks, history, and hot chicken</div>
+      </div>
+      <div class="day-flag">🤠</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">Three-hour drive from Memphis. Nashville has reinvented itself as one of America's most exciting cities — deep music roots, explosive food scene, genuine culture. Two nights here means you can actually breathe and explore properly.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Country Music Hall of Fame</div>
+          <div class="pick-desc">Even for jazz fans, this museum is extraordinary — the story of American music told through artifacts, recordings, and immersive exhibitions. Half a day easily. The connection between jazz, blues, and country is the throughline.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who errol">🎷 Errol</span>
+          <div class="pick-title">Ryman Auditorium</div>
+          <div class="pick-desc">The "Mother Church of Country Music." The acoustics are legendary. Try to catch a show — they book everything from country to jazz to classical. If nothing's on, do the daytime tour.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">Nashville Predators (NHL Playoffs)</div>
+          <div class="pick-desc">If the Preds made the playoffs, Bridgestone Arena in May is electric. Check the schedule — a playoff game in Nashville is a bucket-list sports experience. Even a regular game is great.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">Nashville SC / Nissan Stadium</div>
+          <div class="pick-desc">MLS soccer runs through May. Nashville SC matches are huge community events. Nissan Stadium (Titans' home) tour is also solid for a pro football fan.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">Cheekwood Botanical Garden</div>
+          <div class="pick-desc">55 acres of stunning gardens on a historic estate. May is peak bloom season — tulips, iris, early summer flowers. The art galleries on site are excellent too. Maria's favourite day.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">Frist Art Museum</div>
+          <div class="pick-desc">World-class rotating exhibitions in a stunning Art Deco building (former post office). Always something compelling on. Nashville's cultural jewel.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">The Parthenon at Centennial Park</div>
+          <div class="pick-desc">A full-scale replica of the Athenian Parthenon — built for Tennessee's 1897 centennial and now a permanent fixture. Inside: a 42-foot statue of Athena. Utterly bizarre and wonderful.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Lower Broadway Honky Tonks</div>
+          <div class="pick-desc">Live music on every floor of every bar, noon to 2am, no cover charge. It's genuinely wild. Robert's Western World, Tootsies, Layla's. Pick a night and just wander.</div>
+        </div>
+      </div>
+      <div class="food-section">
+        <div class="food-title">🍽️ Nashville Must-Eats</div>
+        <div class="food-list">
+          <span class="food-tag">Prince's Hot Chicken (original — prepare yourself)</span>
+          <span class="food-tag">Hattie B's (hot chicken, shorter line)</span>
+          <span class="food-tag">The Catbird Seat (tasting menu, book ahead)</span>
+          <span class="food-tag">Josephine (farm-to-table, excellent)</span>
+          <span class="food-tag">Biscuit Love (don't skip brunch)</span>
+          <span class="food-tag">Arnold's Country Kitchen (meat + 3)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 11 -->
+  <div class="day-block louisville" onclick="toggleDay(this)">
+    <div class="day-header">
+      <div class="day-num">11</div>
+      <div class="day-info">
+        <div class="day-date">Saturday, May 10</div>
+        <div class="day-city">Louisville</div>
+        <div class="day-tagline">The Ali Center, Churchill Downs & Kentucky bourbon — the perfect finale</div>
+      </div>
+      <div class="day-flag">🥃</div>
+      <div class="day-toggle">+</div>
+    </div>
+    <div class="day-body">
+      <p class="day-intro">Two hours north of Nashville, Louisville is an underrated gem. The Kentucky Derby was May 2nd — you just missed it — but Churchill Downs is still open and the bourbon trail is in full swing. A beautiful final chapter.</p>
+      <div class="picks-grid">
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Muhammad Ali Center</div>
+          <div class="pick-desc">Six floors dedicated to Ali's life, legacy, and Louisville roots. Not just a sports museum — a civil rights and humanitarian monument. Errol will love this. One of the best museums in America, full stop.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who jonathan">🏈 Jonathan</span>
+          <div class="pick-title">Churchill Downs Tour</div>
+          <div class="pick-desc">The Kentucky Derby may be over, but Churchill Downs runs races most Saturdays in May. Walk the famous track, stand in the Winner's Circle, watch live racing if available. Jonathan's dream afternoon.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Kentucky Bourbon Trail</div>
+          <div class="pick-desc">Woodford Reserve or Buffalo Trace distillery — both within an hour. World-class tours, barrel tastings, and the story of American whiskey. Perfect for a birthday toast at the end of the trip.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who maria">🎨 Maria</span>
+          <div class="pick-title">Speed Art Museum</div>
+          <div class="pick-desc">Kentucky's oldest and largest art museum, recently renovated. Strong permanent collection with European masters, American art, and Native American works. Beautiful building.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who kyle">🗺️ Kyle</span>
+          <div class="pick-title">Louisville Slugger Museum</div>
+          <div class="pick-desc">The legendary baseball bat manufacturer, still making bats in downtown Louisville. Watch them being made, learn the history, hold a bat that belonged to a Hall of Famer. Genuinely fascinating.</div>
+        </div>
+        <div class="pick-card">
+          <span class="pick-who all">👨‍👩‍👦‍👦 Everyone</span>
+          <div class="pick-title">Final Birthday Dinner: Proof on Main</div>
+          <div class="pick-desc">Inside the 21c Museum Hotel — contemporary art on every wall, outstanding Kentucky cuisine. The perfect final dinner for Errol's 60th. Art for Maria, great food for everyone, a memorable setting to mark the end of an unforgettable trip.</div>
+        </div>
+      </div>
+      <div class="food-section">
+        <div class="food-title">🍽️ Louisville Eats</div>
+        <div class="food-list">
+          <span class="food-tag">Proof on Main (birthday dinner)</span>
+          <span class="food-tag">Jack Fry's (Louisville institution)</span>
+          <span class="food-tag">Garage Bar (wood-fired pizza + bourbon)</span>
+          <span class="food-tag">Mayan Cafe (innovative, local)</span>
+          <span class="food-tag">Gralehaus (coffee & brunch)</span>
+        </div>
+      </div>
+      <div class="night-banner">
+        🥂 <strong>Trip finale toast:</strong> End the night with Kentucky bourbon poured neat. Raise a glass to Errol — 60 years, one incredible road trip, a family that loves him fiercely.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── CLOSING ── -->
+<section class="closing">
+  <h2>Here's to 60, Dad. 🥂</h2>
+  <p>New Orleans jazz, Mississippi history, Memphis blues, Nashville honky tonks, and Louisville bourbon. That's a birthday worth having.</p>
+  <p style="font-style: italic; font-size: 0.9rem; color: rgba(253,248,238,0.4);">We love you more than Herbie Hancock has notes.</p>
+
+  <div class="family-list">
+    <div class="family-member">
+      <div class="family-avatar" style="background: linear-gradient(135deg, #f4c842, #d4a017);">🎷</div>
+      <div class="family-name">Errol</div>
+      <div class="family-vibe">The Birthday King</div>
+    </div>
+    <div class="family-member">
+      <div class="family-avatar" style="background: linear-gradient(135deg, #ec4899, #be185d);">🎨</div>
+      <div class="family-name">Maria</div>
+      <div class="family-vibe">The Art Lover</div>
+    </div>
+    <div class="family-member">
+      <div class="family-avatar" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">🏈</div>
+      <div class="family-name">Jonathan</div>
+      <div class="family-vibe">The Sports Guy</div>
+    </div>
+    <div class="family-member">
+      <div class="family-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">🗺️</div>
+      <div class="family-name">Kyle</div>
+      <div class="family-vibe">The Explorer</div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Toggle day blocks
+function toggleDay(el) {
+  el.classList.toggle('open');
+}
+
+// Confetti
+(function() {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let W = canvas.width = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+  const colors = ['#f4c842','#ffffff','#7c3aed','#f97316','#10b981','#3b82f6','#ec4899'];
+  const pieces = [];
+  const NUM = 120;
+
+  for (let i = 0; i < NUM; i++) {
+    pieces.push({
+      x: Math.random() * W,
+      y: Math.random() * H - H,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 5 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speed: Math.random() * 2 + 1,
+      angle: Math.random() * 360,
+      spin: (Math.random() - 0.5) * 4,
+      opacity: Math.random() * 0.7 + 0.3
+    });
+  }
+
+  let elapsed = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    elapsed++;
+    if (elapsed > 300) { canvas.style.display = 'none'; return; }
+    pieces.forEach(p => {
+      p.y += p.speed;
+      p.angle += p.spin;
+      if (p.y > H) { p.y = -10; p.x = Math.random() * W; }
+      ctx.save();
+      ctx.globalAlpha = p.opacity * Math.max(0, 1 - elapsed/300);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle * Math.PI / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  window.addEventListener('resize', () => {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  });
+})();
+
+// Auto-open first day block
+document.querySelectorAll('.day-block').forEach((b, i) => {
+  if (i > 0) b.classList.remove('open');
+});
+</script>
+</body>
+</html>
